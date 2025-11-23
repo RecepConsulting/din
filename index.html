@@ -11,24 +11,30 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <title>Din - Guide Islamique</title>
   </head>
-  <body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+  <body class="bg-gradient-to-br from-gray-50 via-emerald-50/30 to-gray-50 dark:from-gray-900 dark:via-emerald-950/20 dark:to-gray-900 transition-colors duration-300 min-h-screen">
     <!-- Header -->
-    <header class="bg-white dark:bg-gray-800 shadow-sm sticky top-0 z-50">
-      <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-        <div class="flex items-center space-x-2">
-          <svg class="w-8 h-8 text-emerald-600 dark:text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
-          </svg>
-          <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Din</h1>
+    <header class="sticky top-0 z-50">
+      <nav class="container mx-auto px-4 py-5 flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+          <div class="relative">
+            <div class="absolute inset-0 bg-yellow-400 rounded-full blur-md opacity-40"></div>
+            <svg class="w-10 h-10 text-white relative icon-pulse" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+            </svg>
+          </div>
+          <div>
+            <h1 class="text-2xl font-bold text-white tracking-tight">Din</h1>
+            <p class="text-xs text-white/80">Guide Islamique</p>
+          </div>
         </div>
 
         <div class="flex items-center space-x-4">
           <!-- Dark Mode Toggle -->
-          <button id="darkModeToggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors" aria-label="Toggle dark mode">
-            <svg class="w-6 h-6 text-gray-700 dark:text-gray-300 hidden dark:block" fill="currentColor" viewBox="0 0 24 24">
+          <button id="darkModeToggle" class="p-2.5 transition-all" aria-label="Toggle dark mode">
+            <svg class="w-6 h-6 text-white hidden dark:block" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
             </svg>
-            <svg class="w-6 h-6 text-gray-700 dark:text-gray-300 block dark:hidden" fill="currentColor" viewBox="0 0 24 24">
+            <svg class="w-6 h-6 text-white block dark:hidden" fill="currentColor" viewBox="0 0 24 24">
               <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
             </svg>
           </button>
@@ -37,34 +43,40 @@
 
       <!-- Navigation Tabs -->
       <div class="container mx-auto px-4">
-        <div class="flex space-x-1 overflow-x-auto no-scrollbar border-b border-gray-200 dark:border-gray-700">
-          <button class="tab-btn active px-4 py-3 font-medium text-sm whitespace-nowrap" data-tab="prayers">
-            Horaires de Prière
+        <div class="flex space-x-1 overflow-x-auto no-scrollbar">
+          <button class="tab-btn active px-6 py-3 font-medium text-sm whitespace-nowrap" data-tab="prayers">
+            🕌 Horaires de Prière
           </button>
-          <button class="tab-btn px-4 py-3 font-medium text-sm whitespace-nowrap" data-tab="quran">
-            Coran
+          <button class="tab-btn px-6 py-3 font-medium text-sm whitespace-nowrap" data-tab="quran">
+            📖 Coran
           </button>
-          <button class="tab-btn px-4 py-3 font-medium text-sm whitespace-nowrap" data-tab="qibla">
-            Qibla
+          <button class="tab-btn px-6 py-3 font-medium text-sm whitespace-nowrap" data-tab="qibla">
+            🧭 Qibla
           </button>
         </div>
       </div>
     </header>
 
-    <main class="container mx-auto px-4 py-6">
+    <main class="container mx-auto px-4 py-8">
       <!-- Prayer Times Section -->
-      <section id="prayers-section" class="tab-content">
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-6">
-          <div class="flex items-center justify-between mb-4">
-            <h2 class="text-xl font-bold text-gray-900 dark:text-white">Horaires de Prière</h2>
-            <button id="refreshLocation" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors" aria-label="Rafraîchir la localisation">
-              <svg class="w-5 h-5 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <section id="prayers-section" class="tab-content fade-in">
+        <div class="card-container p-6 mb-6">
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-1">Horaires de Prière</h2>
+              <p class="text-sm text-gray-500 dark:text-gray-400">Temps des salawat quotidiennes</p>
+            </div>
+            <button id="refreshLocation" class="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-900/20 hover:bg-emerald-100 dark:hover:bg-emerald-900/30 transition-all" aria-label="Rafraîchir la localisation">
+              <svg class="w-5 h-5 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
               </svg>
             </button>
           </div>
 
-          <div id="locationInfo" class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+          <div id="locationInfo" class="mb-6 flex items-center space-x-2 text-sm font-medium text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20 px-4 py-3 rounded-xl">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
             <span id="locationText">Localisation en cours...</span>
           </div>
 
@@ -74,46 +86,81 @@
         </div>
 
         <!-- Current Date (Hijri + Gregorian) -->
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Date</h3>
-          <div id="dateInfo" class="space-y-1 text-gray-700 dark:text-gray-300">
-            <p id="hijriDate">Chargement...</p>
-            <p id="gregorianDate"></p>
+        <div class="card-container p-6">
+          <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center space-x-2">
+            <span class="text-2xl">📅</span>
+            <span>Date Islamique</span>
+          </h3>
+          <div id="dateInfo" class="space-y-3">
+            <div class="flex items-center space-x-3">
+              <div class="w-12 h-12 rounded-xl bg-gradient-gold flex items-center justify-center">
+                <span class="text-white text-xl">☪</span>
+              </div>
+              <div>
+                <p class="text-xs text-gray-500 dark:text-gray-400 mb-1">Calendrier Hégirien</p>
+                <p id="hijriDate" class="text-lg font-bold text-gray-900 dark:text-white">Chargement...</p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div class="w-12 h-12 rounded-xl bg-gradient-secondary flex items-center justify-center">
+                <span class="text-white text-xl">📆</span>
+              </div>
+              <div>
+                <p class="text-xs text-gray-500 dark:text-gray-400 mb-1">Calendrier Grégorien</p>
+                <p id="gregorianDate" class="text-lg font-bold text-gray-900 dark:text-white"></p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       <!-- Quran Section -->
       <section id="quran-section" class="tab-content hidden">
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-6">
-          <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Le Saint Coran</h2>
+        <div class="card-container p-6 mb-6">
+          <div class="flex items-center space-x-3 mb-6">
+            <div class="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center">
+              <span class="text-white text-2xl">📖</span>
+            </div>
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Le Saint Coran</h2>
+              <p class="text-sm text-gray-500 dark:text-gray-400">القرآن الكريم</p>
+            </div>
+          </div>
 
           <!-- Language Selection -->
           <div class="mb-4">
-            <label for="translationSelect" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-              Traduction
+            <label for="translationSelect" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 flex items-center space-x-2">
+              <span>🌍</span>
+              <span>Traduction</span>
             </label>
-            <select id="translationSelect" class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500">
-              <option value="fr.hamidullah">Français (Hamidullah)</option>
-              <option value="en.sahih">English (Sahih International)</option>
-              <option value="tr.diyanet">Türkçe (Diyanet)</option>
-              <option value="ar.alafasy">العربية (النص الأصلي)</option>
+            <select id="translationSelect" class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all">
+              <option value="fr.hamidullah">🇫🇷 Français (Hamidullah)</option>
+              <option value="en.sahih">🇬🇧 English (Sahih International)</option>
+              <option value="tr.diyanet">🇹🇷 Türkçe (Diyanet)</option>
+              <option value="ar.alafasy">🇸🇦 العربية (النص الأصلي)</option>
             </select>
           </div>
 
           <!-- Surah Selection -->
           <div class="mb-4">
-            <label for="surahSelect" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-              Sourate
+            <label for="surahSelect" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 flex items-center space-x-2">
+              <span>📜</span>
+              <span>Sourate</span>
             </label>
-            <select id="surahSelect" class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500">
+            <select id="surahSelect" class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all">
               <!-- Surahs will be populated by JS -->
             </select>
           </div>
         </div>
 
+        <!-- Bismillah -->
+        <div class="bismillah-decoration text-center">
+          <p class="text-2xl font-bold text-gray-900 dark:text-yellow-100 arabic-text">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</p>
+          <p class="text-sm text-gray-700 dark:text-yellow-200 mt-2">Au nom d'Allah, le Tout Miséricordieux, le Très Miséricordieux</p>
+        </div>
+
         <!-- Quran Text Display -->
-        <div id="quranTextContainer" class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+        <div id="quranTextContainer" class="card-container p-6">
           <div id="surahInfo" class="mb-6">
             <!-- Surah info will be inserted here -->
           </div>
@@ -125,60 +172,119 @@
 
       <!-- Qibla Section -->
       <section id="qibla-section" class="tab-content hidden">
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-          <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Direction de la Qibla</h2>
+        <div class="card-container p-6">
+          <div class="flex items-center space-x-3 mb-6">
+            <div class="w-12 h-12 rounded-xl bg-gradient-gold flex items-center justify-center">
+              <span class="text-white text-2xl">🧭</span>
+            </div>
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Direction de la Qibla</h2>
+              <p class="text-sm text-gray-500 dark:text-gray-400">Orientation vers La Mecque</p>
+            </div>
+          </div>
 
-          <div id="qiblaInfo" class="text-center mb-6">
-            <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Direction vers La Mecque</p>
-            <p id="qiblaDirection" class="text-3xl font-bold text-emerald-600 dark:text-emerald-400">--°</p>
+          <div id="qiblaInfo" class="text-center mb-8 p-6 rounded-2xl bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-900/20 dark:to-green-900/20">
+            <p class="text-sm font-medium text-emerald-700 dark:text-emerald-400 mb-3">Direction vers la Kaaba</p>
+            <div class="flex items-center justify-center space-x-3">
+              <div class="relative">
+                <div class="absolute inset-0 bg-emerald-400 blur-xl opacity-30"></div>
+                <p id="qiblaDirection" class="relative text-5xl font-bold bg-gradient-to-r from-emerald-600 to-green-600 dark:from-emerald-400 dark:to-green-400 bg-clip-text text-transparent">--°</p>
+              </div>
+            </div>
           </div>
 
           <!-- Compass -->
-          <div class="relative mx-auto" style="width: 280px; height: 280px;">
+          <div class="relative mx-auto mb-6" style="width: 300px; height: 300px;">
             <div id="compassContainer" class="relative w-full h-full">
+              <!-- Compass background circle with gradient -->
+              <div class="absolute inset-0 rounded-full bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 shadow-2xl"></div>
+
               <!-- Compass SVG -->
-              <svg class="absolute inset-0 w-full h-full" viewBox="0 0 280 280">
-                <!-- Compass circle -->
-                <circle cx="140" cy="140" r="130" fill="none" stroke="currentColor" class="text-gray-300 dark:text-gray-600" stroke-width="2"/>
+              <svg class="absolute inset-0 w-full h-full" viewBox="0 0 300 300">
+                <!-- Outer ring -->
+                <circle cx="150" cy="150" r="140" fill="none" stroke="url(#compassGradient)" stroke-width="3"/>
+                <defs>
+                  <linearGradient id="compassGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#059669;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#10b981;stop-opacity:1" />
+                  </linearGradient>
+                </defs>
 
-                <!-- Cardinal directions -->
-                <text x="140" y="25" text-anchor="middle" class="fill-gray-700 dark:fill-gray-300 font-bold text-lg">N</text>
-                <text x="255" y="145" text-anchor="middle" class="fill-gray-700 dark:fill-gray-300 font-bold text-lg">E</text>
-                <text x="140" y="262" text-anchor="middle" class="fill-gray-700 dark:fill-gray-300 font-bold text-lg">S</text>
-                <text x="25" y="145" text-anchor="middle" class="fill-gray-700 dark:fill-gray-300 font-bold text-lg">O</text>
+                <!-- Cardinal directions with colored backgrounds -->
+                <circle cx="150" cy="30" r="20" fill="#059669" opacity="0.9"/>
+                <text x="150" y="38" text-anchor="middle" class="fill-white font-bold text-xl">N</text>
 
-                <!-- Degree markers -->
-                <g id="degreeMarkers" class="text-gray-400 dark:text-gray-500">
-                  <!-- Will be generated by JS -->
-                </g>
+                <circle cx="270" cy="150" r="20" fill="#3b82f6" opacity="0.9"/>
+                <text x="270" y="158" text-anchor="middle" class="fill-white font-bold text-xl">E</text>
+
+                <circle cx="150" cy="270" r="20" fill="#6b7280" opacity="0.9"/>
+                <text x="150" y="278" text-anchor="middle" class="fill-white font-bold text-xl">S</text>
+
+                <circle cx="30" cy="150" r="20" fill="#f59e0b" opacity="0.9"/>
+                <text x="30" y="158" text-anchor="middle" class="fill-white font-bold text-xl">O</text>
               </svg>
 
               <!-- Rotating needle -->
               <div id="compassNeedle" class="absolute inset-0 transition-transform duration-300" style="transform-origin: center;">
-                <svg class="w-full h-full" viewBox="0 0 280 280">
-                  <!-- Qibla direction arrow (green) -->
-                  <path d="M140 40 L135 140 L140 145 L145 140 Z" fill="#059669" stroke="#047857" stroke-width="2"/>
-                  <!-- Opposite direction (red) -->
-                  <path d="M140 240 L135 140 L140 135 L145 140 Z" fill="#dc2626" stroke="#b91c1c" stroke-width="2"/>
-                  <!-- Center dot -->
-                  <circle cx="140" cy="140" r="8" fill="#374151" stroke="white" stroke-width="2"/>
+                <svg class="w-full h-full" viewBox="0 0 300 300">
+                  <!-- Qibla direction arrow (gradient green) -->
+                  <defs>
+                    <linearGradient id="needleGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" style="stop-color:#059669;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#10b981;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M150 50 L140 150 L150 155 L160 150 Z" fill="url(#needleGradient)" stroke="#047857" stroke-width="2" filter="drop-shadow(0 4px 6px rgba(0,0,0,0.3))"/>
+                  <!-- Opposite direction (red gradient) -->
+                  <defs>
+                    <linearGradient id="needleGradientRed" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" style="stop-color:#dc2626;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#b91c1c;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M150 250 L140 150 L150 145 L160 150 Z" fill="url(#needleGradientRed)" stroke="#991b1b" stroke-width="2" filter="drop-shadow(0 4px 6px rgba(0,0,0,0.3))"/>
+                  <!-- Center dot with glow -->
+                  <circle cx="150" cy="150" r="12" fill="#1f2937" stroke="white" stroke-width="3" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.4))"/>
+                  <circle cx="150" cy="150" r="6" fill="#10b981"/>
                 </svg>
               </div>
             </div>
           </div>
 
-          <div id="qiblaStatus" class="mt-6 text-center text-sm text-gray-600 dark:text-gray-400">
-            <p>Pour utiliser la boussole, autorisez l'accès aux capteurs de votre appareil</p>
+          <div id="qiblaStatus" class="text-center p-4 rounded-xl bg-blue-50 dark:bg-blue-900/20 text-sm font-medium text-blue-700 dark:text-blue-400">
+            <p>💡 Pour utiliser la boussole, autorisez l'accès aux capteurs de votre appareil</p>
           </div>
         </div>
       </section>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-12">
-      <div class="container mx-auto px-4 py-6 text-center text-sm text-gray-600 dark:text-gray-400">
-        <p>Application Din - Guide Islamique gratuit et sans publicité</p>
-        <p class="mt-2">Sources : Al-Adhan API, Al-Quran Cloud API</p>
+    <footer class="mt-12 bg-gradient-to-r from-emerald-600 via-green-600 to-emerald-600 dark:from-emerald-900 dark:via-green-900 dark:to-emerald-900">
+      <div class="container mx-auto px-4 py-8 text-center">
+        <div class="mb-4">
+          <div class="inline-flex items-center space-x-2 mb-2">
+            <svg class="w-6 h-6 text-yellow-300" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+            </svg>
+            <span class="text-white font-bold text-lg">Din - Guide Islamique</span>
+          </div>
+          <p class="text-emerald-100 text-sm">Application gratuite et sans publicité pour la communauté musulmane</p>
+        </div>
+
+        <div class="border-t border-emerald-400/30 pt-4 mt-4">
+          <p class="text-emerald-200 text-xs mb-2">Sources fiables et reconnues :</p>
+          <div class="flex justify-center space-x-4 text-emerald-100 text-xs">
+            <span>📡 Al-Adhan API</span>
+            <span>•</span>
+            <span>📖 Al-Quran Cloud</span>
+            <span>•</span>
+            <span>🗺️ OpenStreetMap</span>
+          </div>
+        </div>
+
+        <div class="mt-4 text-emerald-200 text-xs">
+          <p>✨ Développé avec ❤️ pour l'Oummah</p>
+        </div>
       </div>
     </footer>
 

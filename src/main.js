@@ -155,10 +155,10 @@ function displayPrayerTimes(data) {
 
     if (prayer === currentPrayer) {
       classes += ' current';
-      badge = '<span class="px-2 py-1 text-xs font-semibold rounded-full bg-emerald-500 text-white">En cours</span>';
+      badge = '<span class="badge-current">⏰ En cours</span>';
     } else if (prayer === nextPrayer) {
       classes += ' next';
-      badge = '<span class="px-2 py-1 text-xs font-semibold rounded-full bg-blue-500 text-white">Prochaine</span>';
+      badge = '<span class="badge-next">⏭️ Prochaine</span>';
     }
 
     return `
@@ -363,25 +363,37 @@ async function displaySurah() {
 
     // Display surah info
     document.getElementById('surahInfo').innerHTML = `
-      <div class="text-center border-b border-gray-200 dark:border-gray-700 pb-4">
-        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-          ${surahData.englishName} - ${surahData.name}
+      <div class="text-center pb-6 mb-6 border-b-2 border-emerald-200 dark:border-emerald-800">
+        <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-primary mb-4 shadow-lg">
+          <span class="text-white text-3xl">📜</span>
+        </div>
+        <h3 class="text-3xl font-bold bg-gradient-to-r from-emerald-600 to-green-600 dark:from-emerald-400 dark:to-green-400 bg-clip-text text-transparent mb-3">
+          ${surahData.englishName}
         </h3>
-        <p class="text-sm text-gray-600 dark:text-gray-400">
-          ${surahInfo.revelation === 'Meccan' ? 'Mecquoise' : 'Médinoise'} • ${surahData.numberOfAyahs} versets
-        </p>
+        <p class="text-2xl arabic-text text-gray-800 dark:text-gray-200 mb-3">${surahData.name}</p>
+        <div class="flex items-center justify-center space-x-3 text-sm">
+          <span class="px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 font-semibold">
+            ${surahInfo.revelation === 'Meccan' ? '🕋 Mecquoise' : '🕌 Médinoise'}
+          </span>
+          <span class="px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 font-semibold">
+            📖 ${surahData.numberOfAyahs} versets
+          </span>
+        </div>
       </div>
     `;
 
     // Display verses
-    container.innerHTML = surahData.ayahs.map(ayah => `
-      <div class="verse-card">
-        <div class="flex items-start justify-between mb-2">
-          <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-emerald-600 dark:bg-emerald-500 text-white text-sm font-semibold">
-            ${ayah.numberInSurah}
-          </span>
+    container.innerHTML = surahData.ayahs.map((ayah, index) => `
+      <div class="verse-card fade-in" style="animation-delay: ${index * 0.02}s">
+        <div class="flex items-start justify-between mb-3">
+          <div class="flex items-center space-x-3">
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-primary text-white text-sm font-bold shadow-md">
+              ${ayah.numberInSurah}
+            </span>
+            <div class="h-px flex-1 bg-gradient-to-r from-emerald-200 to-transparent dark:from-emerald-800"></div>
+          </div>
         </div>
-        <p class="text-gray-800 dark:text-gray-200 leading-relaxed">
+        <p class="text-gray-800 dark:text-gray-200 leading-relaxed text-lg">
           ${ayah.text}
         </p>
       </div>
