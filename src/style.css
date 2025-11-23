@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+/* Custom styles */
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Tab button styles */
+.tab-btn {
+  @apply text-gray-600 dark:text-gray-400 border-b-2 border-transparent transition-all duration-200;
+}
+
+.tab-btn:hover {
+  @apply text-gray-900 dark:text-gray-100;
+}
+
+.tab-btn.active {
+  @apply text-emerald-600 dark:text-emerald-400 border-emerald-600 dark:border-emerald-400;
+}
+
+/* Prayer card styles */
+.prayer-card {
+  @apply flex items-center justify-between p-4 rounded-lg border border-gray-200 dark:border-gray-700 transition-all duration-200;
+}
+
+.prayer-card:hover {
+  @apply bg-gray-50 dark:bg-gray-700;
+}
+
+.prayer-card.current {
+  @apply bg-emerald-50 dark:bg-emerald-900/20 border-emerald-500 dark:border-emerald-500;
+}
+
+.prayer-card.next {
+  @apply bg-blue-50 dark:bg-blue-900/20 border-blue-500 dark:border-blue-500;
+}
+
+/* Verse card styles */
+.verse-card {
+  @apply p-4 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700/50;
+}
+
+/* Arabic text */
+.arabic-text {
+  @apply text-right text-2xl leading-loose font-arabic;
+  font-family: 'Traditional Arabic', 'Al Qalam Quran Majeed', serif;
+}
+
+/* Animation for loading */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.loading {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Smooth transitions */
+* {
+  transition-property: color, background-color, border-color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Print styles */
+@media print {
+  header, footer, .no-print {
+    display: none;
+  }
+}
